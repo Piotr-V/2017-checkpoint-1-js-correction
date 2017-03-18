@@ -1,9 +1,11 @@
+
 /************************************************\
 ==================================================
 1. Font
 2. Navbar
 3. Citation
 4. Footer
+5. Form
 ==================================================
 \************************************************/
 
@@ -12,6 +14,7 @@
 1. Font
 ==================================================
 \************************************************/
+
 @font-face {
   font-family: 'Folkard';
   src: url('/fonts/folkard_.ttf');
@@ -27,22 +30,43 @@
 ==================================================
 \************************************************/
 
+nav.navbar {
+  margin-bottom: 0;
+  border-radius: 0;
+}
+
+nav.navbar img {
+  width: 35px;
+  margin-top: -10px;
+}
 
 /************************************************\
 ==================================================
 3. Citation
 ==================================================
 \************************************************/
+
 .kaamelott-underline {
   border-bottom: solid 5px #a57824;
 }
 
-.kaamelott-banner.jumbotron {
+.kaamelott-banner {
   background-image: url('/img/kaamelott-banner.jpg');
   background-position: top center;
   background-repeat: no-repeat;
   background-size: cover;
   color: white;
+  height: 235px;
+}
+
+.kaamelott-banner .frame {
+  margin-top: 0;
+  padding-left: 10%;
+  padding-top: 5%;
+}
+
+#citations {
+    margin-top: 15px;
 }
 
 p.source {
@@ -104,9 +128,32 @@ blockquote {
   background-color: #996f21;
 }
 
+#model {
+  display: none;
+}
 
 /************************************************\
 ==================================================
 4. Footer
 ==================================================
 \************************************************/
+
+footer {
+  text-align: center;
+}
+
+footer i.fa {
+  font-size: 3rem;
+  margin: 10px;
+}
+
+/************************************************\
+==================================================
+5. Form
+==================================================
+\************************************************/
+
+.container form {
+  margin-bottom: 20px;
+  margin-top: 20px;
+}
