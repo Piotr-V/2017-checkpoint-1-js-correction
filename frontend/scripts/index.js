@@ -75,6 +75,7 @@ function actionDetails(e) {
   var thumb = getParentThumb(e.currentTarget.parentNode);
 
   if (thumb) {
+    // Fill the unique modal dialog with the selected citation content
     var modal = document.getElementById('seeMoreModal');
 
     var content = thumb.getElementsByTagName('blockquote')[0].textContent;
@@ -97,7 +98,7 @@ function actionDelete(e) {
   }
 }
 
-// Search parent frame givent 
+// Search the parent thumb from one of its children
 function getParentThumb(element) {
 
   while (element && element.nodeName !== 'ARTICLE') {

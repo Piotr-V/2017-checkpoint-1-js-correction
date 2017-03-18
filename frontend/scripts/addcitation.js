@@ -5,25 +5,36 @@ const API_URL = 'http://localhost:3000/articles';
 window.onload = function () {
 
   document.getElementById('submit').onclick = function () {
-    if (confirm('Etes-vous sûr(e) de vouloir ajouter cette citation ?')) {
-      submitCitation();
+    // Submit the entered citation if all fields are ok
+    var citation = buildCitation();
+    if (!citation) {
+      alert('Vous devez remplir tous les champs !');
+    }
+    else if (confirm('Etes-vous sûr(e) de vouloir ajouter cette citation ?')) {
+        sendCitation(citation);  
     }
   };
 };
 
-// Creation et envoi d'un nouvel objet citation
-function submitCitation() {
-    var citation = {};
+// Create and store a new citation object
+function buildCitation() {
 
     var fields = document.getElementsByClassName('form-control');
+    var date = new Date();
+
+    var citation = {
+      date: date.toISOString()
+    };
+
     for (let ctrl of fields) {
+      if (ctrl.value.length == 0) {
+        // Don't accept empty field
+        return null;
+      }
       citation[ctrl.name] = ctrl.value;
     }
 
-    var date = new Date();
-    citation.date = date.toISOString();
-
-    sendCitation(citation);  
+    return citation;
 }
 
 // Send new citation to the remote server
