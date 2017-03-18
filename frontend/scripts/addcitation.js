@@ -5,7 +5,14 @@ const API_URL = 'http://localhost:3000/articles';
 window.onload = function () {
 
   document.getElementById('submit').onclick = function () {
+    if (confirm('Etes-vous sûr(e) de vouloir ajouter cette citation ?')) {
+      submitCitation();
+    }
+  };
+};
 
+// Creation et envoi d'un nouvel objet citation
+function submitCitation() {
     var citation = {};
 
     var fields = document.getElementsByClassName('form-control');
@@ -13,12 +20,14 @@ window.onload = function () {
       citation[ctrl.name] = ctrl.value;
     }
 
-    createCitation(citation);
-  };
-};
+    var date = new Date();
+    citation.date = date.toISOString();
+
+    sendCitation(citation);  
+}
 
 // Send new citation to the remote server
-function createCitation(citation) {
+function sendCitation(citation) {
 
   let xhr = new XMLHttpRequest();
 
@@ -31,10 +40,6 @@ function createCitation(citation) {
       }
     }
   };
-  
-  var date = new Date();
-
-  citation.date = date.toISOString();
 
   xhr.open('POST', API_URL);
   xhr.setRequestHeader('Content-type', 'application/json');
