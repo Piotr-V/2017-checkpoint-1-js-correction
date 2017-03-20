@@ -4,7 +4,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
-  <title>Cestpasfaux.com - Ajout citation</title>
+  <title>Cestpasfaux.com - Edition citation</title>
   <link rel="stylesheet" href="vendor/bootstrap/css/bootstrap.min.css">
   <link rel="stylesheet" href="vendor/font-awesome/css/font-awesome.min.css">
   <link rel="stylesheet" href="css/stylesheet.css">
@@ -26,13 +26,15 @@
   <div class="container">
     <div class="row">
       <div class="col-sm-offset-3 col-sm-6">
-        <h2>Ajouter une nouvelle citation</h2>
+        <h2>Editer une citation</h2>
         <div>          
           <a href="https://fr.wikiquote.org/wiki/Kaamelott" target="_blank">
             <i class="fa fa-question-circle"></i> Voir le site de référence
           </a>
         </div>
         <form>
+          <input type="hidden" class="form-control" id="id" name="id" />
+          <input type="hidden" class="form-control" id="date" name="date" />
           <div class="form-group">
             <label for="author">Auteur</label>
             <input type="text" class="form-control" id="author" name="author" />
@@ -40,7 +42,7 @@
           <div class="row">
             <div class="form-group col-xs-6">
               <label for="book">Livre</label>
-              <input type="text" class="form-control" id="book" name="book" />
+              <input type="text" class="form-control" id="chapter" name="chapter" />
             </div>
             <div class="form-group col-xs-6">
               <label for="episode">Episode</label>
@@ -49,7 +51,7 @@
           </div>
           <div class="form-group">
             <label for="content">Citation</label>
-            <textarea class="form-control" id="content" name="content"></textarea>
+            <textarea class="form-control" id="content" name="content" rows="7"></textarea>
           </div>
           <div class="form-group">
             <label for="image">Url de l'image</label>
@@ -73,7 +75,7 @@
 
   <script type="text/javascript" src="vendor/jquery-3.1.1.min.js"></script>
   <script type="text/javascript" src="vendor/bootstrap/js/bootstrap.min.js"></script>
-  <script type="text/javascript" src="scripts/addcitation.js"></script>
+  <script type="text/javascript" src="scripts/editcitation.js"></script>
 </body>
 
 </html>

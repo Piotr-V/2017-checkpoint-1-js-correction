@@ -61,6 +61,7 @@ window.onload = function () {
 
       thumb.getElementsByClassName('actionDetails')[0].onclick = actionDetails;
       thumb.getElementsByClassName('actionDelete')[0].onclick = actionDelete;
+      thumb.getElementsByClassName('actionEdit')[0].onclick = actionEdit;
 
       thumb.id = citation.id;
 
@@ -70,15 +71,13 @@ window.onload = function () {
 
   // Display citation details modal dialog box
   function actionDetails(e) {
-
     let thumb = getParentThumb(e.currentTarget.parentNode);
-
     if (thumb) {
       // Fill the unique modal dialog with the selected citation content
       let modal = document.getElementById('seeMoreModal');
 
-      let content = thumb.getElementsByTagName('blockquote')[0].textContent,
-        source = thumb.getElementsByClassName('source')[0].innerHTML;
+      let content = thumb.getElementsByTagName('blockquote')[0].textContent;
+      let source = thumb.getElementsByClassName('source')[0].innerHTML;
 
       modal.getElementsByTagName('blockquote')[0].textContent = content;
       modal.getElementsByClassName('source')[0].innerHTML = source;
@@ -87,13 +86,17 @@ window.onload = function () {
 
   // Delete citation
   function actionDelete(e) {
-
-    e.preventDefault();
-
     let thumb = getParentThumb(e.currentTarget);
-
     if (thumb && window.confirm('Etes-vous sûr(e) de vouloir effacer cette citation ?')) {
       deleteCitation(thumb.id);
+    }
+  }
+
+  // Edit citation
+  function actionEdit(e) {
+    let thumb = getParentThumb(e.currentTarget);
+    if (thumb) {
+      window.location = `/editcitation?id=${thumb.id}`;
     }
   }
 
