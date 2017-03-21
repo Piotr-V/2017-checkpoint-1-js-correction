@@ -25,25 +25,6 @@ window.onload = function () {
     xhr.send();
   }
 
-  // Delete the given citation
-  function deleteCitation(id) {
-
-    let xhr = new XMLHttpRequest();
-
-    xhr.onreadystatechange = function () {
-      if (xhr.readyState === XMLHttpRequest.DONE) {
-        if (xhr.status === 200) {
-          document.getElementById(id).remove();
-        } else {
-          window.alert(`Erreur : ${xhr.statusText}.`);
-        }
-      }
-    };
-
-    xhr.open('DELETE', API_URL + "/" + id);
-    xhr.send();
-  }
-
   // Put the received citations on the HTML page
   function showCitations(citations) {
 
@@ -69,9 +50,28 @@ window.onload = function () {
     });
   }
 
+  // Delete the given citation
+  function deleteCitation(id) {
+
+    let xhr = new XMLHttpRequest();
+
+    xhr.onreadystatechange = function () {
+      if (xhr.readyState === XMLHttpRequest.DONE) {
+        if (xhr.status === 200) {
+          document.getElementById(id).remove();
+        } else {
+          window.alert(`Erreur : ${xhr.statusText}.`);
+        }
+      }
+    };
+
+    xhr.open('DELETE', API_URL + "/" + id);
+    xhr.send();
+  }
+
   // Display citation details modal dialog box
   function actionDetails(e) {
-    let thumb = getParentThumb(e.currentTarget.parentNode);
+    let thumb = getParentThumb(e.currentTarget);
     if (thumb) {
       // Fill the unique modal dialog with the selected citation content
       let modal = document.getElementById('seeMoreModal');
