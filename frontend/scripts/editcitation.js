@@ -22,8 +22,12 @@ window.onload = function () {
 
   // Retrieve citation id from url
   function getCitationId(url) {
-    var id = url.split('?')[1].split('&')[0];
-    return id ? id.split('=')[1] : null;
+    var parts = url.split('?');
+    if (parts.length > 1) {
+      var id = parts[1].split('&')[0];
+      return id.split('=')[1];
+    }
+    return null;
   }
 
   // Create and store a new citation object
