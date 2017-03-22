@@ -71,6 +71,7 @@ window.onload = function () {
 
   // Display citation details modal dialog box
   function actionDetails(e) {
+
     let thumb = getParentThumb(e.currentTarget);
     if (thumb) {
       // Fill the unique modal dialog with the selected citation content
